@@ -31,10 +31,10 @@ public class Hooks {
     }
 
     @After
-    public void tearDown(Scenario n11) {
+    public void tearDown(Scenario global) {
         //Take screenshot in allure report
-        if (n11.isFailed()){
-            Allure.addAttachment(n11.getName(),new ByteArrayInputStream(((TakesScreenshot)driver)
+        if (global.isFailed()){
+            Allure.addAttachment(global.getName(),new ByteArrayInputStream(((TakesScreenshot)driver)
                     .getScreenshotAs(OutputType.BYTES)));
         }
         Driver.closeDriver();
