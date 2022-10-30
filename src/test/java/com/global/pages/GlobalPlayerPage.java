@@ -36,12 +36,15 @@ public class GlobalPlayerPage extends HomePage {
 
     public void goDown() throws AWTException {
         bannerArrow.click();
+        if (bannerArrow.isDisplayed()){
         Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+        robot.keyPress(KeyEvent.VK_PAGE_DOWN);}
     }
 
     public void goToRadio(int radioNumber){
+        waitForVisibility(radio(radioNumber), 5);
         hover(radio(radioNumber));
+        waitForVisibility(listenLiveBtn(radioNumber), 5);
         listenLiveBtn(radioNumber).click();
     }
 
